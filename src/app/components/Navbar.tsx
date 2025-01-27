@@ -73,7 +73,7 @@ const Navbar = () => {
       >
         <div className="items-center space-y-5 md:flex md:space-x-6 md:space-y-0 md:ml-12">
           {navigation.map((item, idx) => (
-            <li className="text-gray-500 hover:text-yellow-400" key={idx}>
+            <li className="text-gray-500 text-lg hover:text-yellow-400" key={idx}>
               <a href={item.path}>{item.title}</a>
             </li>
           ))}
