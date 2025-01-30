@@ -1,11 +1,11 @@
-// Navbar.tsx
-'use client'
-import React, { useState } from "react";
+"use client"
+import { useState } from "react"
+import Link from "next/link"
+import { Menu, X } from "lucide-react"
 
 const Navbar = () => {
-  const [state, setState] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // Navigation items
   const navigation = [
     { title: "Team", path: "/mentors" },
     { title: "About", path: "/about" },
@@ -14,78 +14,63 @@ const Navbar = () => {
     { title: "Events", path: "/" },
     { title: "Community", path: "" },
     { title: "Contact", path: "/" },
-  ];
+  ]
 
   return (
-    <nav className="relative items-center pt-5  px-4 mx-auto w-full sm:px-8 lg:flex md:space-x-6">
-      <div className="flex justify-between">
-        <a href="/">
-          <img
-            src="/hivedark.svg"
-            width={150}
-            height={70}
-            alt="Hive Resource Hub"
-          />
-        </a>
-        <button
-          className="text-gray-500 outline-none md:hidden"
-          onClick={() => setState(!state)}
-        >
-          {state ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
-      </div>
-      <ul
-        className={`flex-1 justify-between mt-12 md:text-sm md:font-medium md:flex md:mt-0 ${
-          state
-            ? "absolute inset-x-0 px-4 border-b bg-white md:border-none md:static"
-            : "hidden"
-        }`}
-      >
-        <div className="items-center space-y-5 md:flex md:space-x-6 md:space-y-0 md:ml-12">
-          {navigation.map((item, idx) => (
-            <li className="text-gray-500 text-lg hover:text-yellow-400" key={idx}>
-              <a href={item.path}>{item.title}</a>
-            </li>
-          ))}
+    <nav className="relative w-full px-4 py-5 mx-auto sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between">
+        <Link href="/" className="flex-shrink-0">
+          <img src="/hivedark.svg" width={150} height={70} alt="Hive Resource Hub" className="h-20 w-auto" />
+        </Link>
+        <div className="flex items-center lg:hidden">
+          <button
+            className="text-gray-500 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
-        <li className="order-2 py-5 md:py-0">
-          <button className="inline-flex h-12 items-center justify-center font-geist rounded-3xl border border-gray-800 bg-white px-6 font-medium text-gray-950 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 ">
+        <div className="hidden lg:flex lg:items-center lg:justify-between lg:w-full lg:ml-12">
+          <ul className="flex space-x-8">
+            {navigation.map((item, idx) => (
+              <li key={idx}>
+                <Link
+                  href={item.path}
+                  className="text-gray-500 hover:text-yellow-400 text-lg transition-colors duration-200"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button className="inline-flex h-12 items-center justify-center font-geist rounded-3xl border border-gray-800 bg-white px-6 font-medium text-gray-950 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50">
             Get Started
           </button>
-        </li>
-      </ul>
+        </div>
+      </div>
+      {isMenuOpen && (
+        <div className="lg:hidden mt-4">
+          <ul className="flex flex-col space-y-4">
+            {navigation.map((item, idx) => (
+              <li key={idx}>
+                <Link
+                  href={item.path}
+                  className="text-gray-500 hover:text-yellow-400 text-lg transition-colors duration-200 block"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button className="mt-6 w-full inline-flex h-12 items-center justify-center font-geist rounded-3xl border border-gray-800 bg-white px-6 font-medium text-gray-950 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50">
+            Get Started
+          </button>
+        </div>
+      )}
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
+
