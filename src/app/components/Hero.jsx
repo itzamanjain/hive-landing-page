@@ -111,8 +111,8 @@ export default function Hero() {
               Over 200+ Students Got Hired
               <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
             </h1>
-            <h2 className="text-4xl md:text-5xl font-geist font-normal tracking-tighter lg:text-5xl text-transparent bg-clip-text bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
-            Unlock Your Career Potential with HIVE's Supportive Community
+            <h2 className="text-4xl md:text-5xl font-geist font-normal tracking-tight lg:text-5xl text-transparent bg-clip-text bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+            Unlock Your Career Potential with <span className="text-yellow-400">HIVE's</span> Supportive Community
             </h2>
             <p className="font-geist">
             Empowering job seekers with personalized guidance, essential resources, and a supportive community for success.
