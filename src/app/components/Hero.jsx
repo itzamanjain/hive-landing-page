@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { ChevronRight, Menu, X } from "lucide-react"
+import Navbar from "./Navbar"
 
 export default function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -29,7 +30,7 @@ export default function Hero() {
 
       <div className="absolute -z-1 inset-0 h-[600px] w-full bg-transparent opacity-10 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
 
-      <nav className="relative z-10 px-4 py-5 mx-auto w-full sm:px-8">
+      {/* <nav className="relative z-10 px-4 py-5 mx-auto w-full sm:px-8">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <img src="/hivedark.svg" width={150} height={70} alt="FarmUI logo" />
@@ -62,7 +63,8 @@ export default function Hero() {
             </button>
           </div>
         )}
-      </nav>
+      </nav> */}
+      <Navbar />
 
       <section className="py-28 z-10 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex">
